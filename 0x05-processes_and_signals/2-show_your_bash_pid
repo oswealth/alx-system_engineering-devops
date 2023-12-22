@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script prints lines containing the bash word
+# shellcheck disable=SC2009
+
+ps auxf | grep bash
