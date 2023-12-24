@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# A script that loops through 1 to 10 using while and elif.
+
+coun=1
+
+while [ $coun -le 10 ]
+do
+    if [ $coun -eq 4 ]
+    then
+        echo "bad luck"
+    elif [ $coun -eq 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    ((coun++))
+done
