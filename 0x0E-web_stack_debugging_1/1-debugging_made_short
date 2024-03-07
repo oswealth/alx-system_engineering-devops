@@ -1,5 +1,4 @@
 #!/bin/bash
 apt-get update
-apt-get install -y nginx net-tools
-service nginx stop
-nginx -g 'daemon off;'
+apt-get install -y net-tools nginx
+service nginx start || service nginx restart

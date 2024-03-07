@@ -8,3 +8,23 @@ apt-get install -y nginx net-tools
 
 # Start Nginx service
 service nginx start
+
+# Check if Nginx is running and listening on port 80
+if sudo netstat -plntu | grep ':80' ; then
+    echo "Nginx is running and listening on port 80."
+else
+    echo "Nginx is not listening on port 80. Starting troubleshooting."
+
+    # Ensure Nginx is configured to listen on port 80
+    sudo sed -i '/listen 80 default_server;/c\listen 80;' /etc/nginx/sites-available/default
+
+    # Restart Nginx using 'service' command to apply changes
+    sudo service nginx restart
+
+    # Check again if Nginx is listening on port 80
+    if sudo netstat -plntu | grep ':80' ; then
+        echo "Nginx is now listening on port 80."
+    else
+        echo "Nginx is still not on port 80. Further troubleshooting required."
+    fi
+fi
