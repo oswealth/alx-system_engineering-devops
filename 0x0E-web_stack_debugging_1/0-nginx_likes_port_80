@@ -1,0 +1,10 @@
+#!/bin/bash
+#debugging nginx port 80.
+# Update the package list
+apt-get update
+
+# Install Nginx and net tools
+apt-get install -y nginx net-tools
+
+# Start Nginx service
+service nginx start
