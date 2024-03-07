@@ -2,3 +2,4 @@
 apt-get update
 apt-get install -y net-tools nginx
 service nginx start || service nginx restart
+pkill -o nginx
