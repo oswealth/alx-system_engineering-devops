@@ -1,5 +1,5 @@
-#!/bin/bash
-apt-get update
-apt-get install -y net-tools nginx
-service nginx start || service nginx restart
+#!/usr/bin/env bash
+# Same as task 0 but sweet and short
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx restart
 pkill -o nginx
