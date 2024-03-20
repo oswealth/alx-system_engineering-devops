@@ -10,7 +10,7 @@ datadir         = /var/lib/mysql
 log-error       = /var/log/mysql/error.log
 relay-log       = /var/log/mysql/mysql-relay-bin.log
 # By default we only accept connections from localhost
-bind-address  = 127.0.0.1
+# bind-address  = 127.0.0.1
 server-id       = 2
 log_bin         = /var/log/mysql/mysql-bin.log
 binlog_do_db    = tyrell_corp
