@@ -1,0 +1,40 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _; # Default server
+
+    location /hbnb_static {
+        alias /data/web_static/current/;
+    }
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    add_header X-Served-By $hostname;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /airbnb-onepage {
+        proxy_pass http://localhost:5000; # Assuming Gunicorn is running on the same server
+    }
+
+    location ~ ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
+        proxy_pass http://localhost:5001; # Proxy to Gunicorn on port 5001
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Redirect with 'return' instead of 'rewrite'
+    location = /redirect_me {
+        return 301 https://th3-gr00t.tk;
+    }
+
+    error_page 404 /error_404.html;
+    location = /error_404.html {
+        internal;
+    }
+}
