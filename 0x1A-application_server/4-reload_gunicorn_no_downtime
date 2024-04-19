@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Bash script to reload Gunicorn in a graceful way.
+
+master_pid=$(ps auxf | pgrep gunicorn | head -1)
+kill -1 "$master_pid"
