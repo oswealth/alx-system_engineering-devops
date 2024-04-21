@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # Gracefully restarts Gunicorn.
 
-if pgrep gunicorn > /dev/null; then
-    pgrep gunicorn | xargs kill -HUP && echo "OK"
+# Find the process IDs (PIDs) of Gunicorn processes and gracefully reload them
+pgrep gunicorn | xargs kill -HUP
+
+# Check if Gunicorn restarted successfully
+if [ $? -eq 0 ]; then
+    echo "OK"
 else
-    echo "Gunicorn is not running."
+    echo "NOk"
 fi
