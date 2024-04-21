@@ -11,8 +11,9 @@ def number_of_subscribers(subreddit):
         'User-Agent': 'My User Agent 1.0'
     }
     try:
-        response = requests.get(f'https://www.reddit.com/r/{subreddit}/about.json',
-                                headers=headers, allow_redirects=False)
+        response = requests.get(
+                f'https://www.reddit.com/r/{subreddit}/about.json',
+                headers=headers, allow_redirects=False)
         if response.status_code == 200:
             json_response = response.json()
             data_dict = json_response.get('data')
