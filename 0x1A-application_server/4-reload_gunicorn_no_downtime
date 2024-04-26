@@ -7,6 +7,4 @@ pgrep gunicorn | xargs kill -HUP
 # Check if Gunicorn restarted successfully
 if [ $? -eq 0 ]; then
     echo "OK"
-else
-    echo "NOk"
 fi
