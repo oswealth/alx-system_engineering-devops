@@ -1,10 +1,11 @@
 [Unit]
 Description=Gunicorn instance to serve web_dynamic/2-hbnb.py
 After=network.target
+After=syslog.target
 
 [Service]
 User=ubuntu
-Group=ubuntu
+Group=www-data
 WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
 ExecStart=gunicorn --workers 3 --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app
 Restart=always
